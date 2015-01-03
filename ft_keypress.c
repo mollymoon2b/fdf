@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 13:21:10 by ade-bonn          #+#    #+#             */
-/*   Updated: 2014/12/28 14:28:02 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2014/12/29 15:15:34 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ void		ft_colorchoice3(t_env *e, int keycode)
 		e->r = 0x00;
 		e->b = 0x00;
 		e->g = 0xff;
+	}
+	if (keycode == 110 && (e->p = 0xcc))
+	{
+		e->r = 0;
+		e->b = 0;
+		e->g = 0;
 	}
 	ft_draw(e);
 }
@@ -84,7 +90,7 @@ int			ft_keypress(int keycode, t_env *e)
 		ft_colorchoice(e, keycode);
 	if (keycode == 99 || keycode == 98)
 		ft_colorchoice2(e, keycode);
-	if (keycode == 121 || keycode == 103)
+	if (keycode == 121 || keycode == 103 || keycode == 110)
 		ft_colorchoice3(e, keycode);
 	ft_draw(e);
 	return (0);

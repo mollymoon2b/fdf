@@ -84,4 +84,7 @@ void				ft_transform(t_env *e);
 void				ft_swapptr(t_pt **a, t_pt **b);
 void				ft_draw_first_case(t_pt *a, t_pt *b, t_env *e);
 void				ft_draw_second_case(t_pt *a, t_pt *b, t_env *e);
+
+void				ft_getinput(t_env *e, char *av);
+t_pt				**ft_addline(t_pt **grid, char **tab, t_env *e);
 #endif

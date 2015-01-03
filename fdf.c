@@ -6,13 +6,13 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 13:16:20 by ade-bonn          #+#    #+#             */
-/*   Updated: 2014/12/28 14:01:22 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2014/12/29 14:52:17 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_pt	**ft_addline(t_pt **grid, char **tab, t_env *e)
+t_pt	**ft_addline(t_pt **grid, char **tab, t_env *e)
 {
 	int		i;
 	int		j;
@@ -40,7 +40,7 @@ static t_pt	**ft_addline(t_pt **grid, char **tab, t_env *e)
 	return (ret);
 }
 
-static void	ft_getinput(t_env *e, char *av)
+void	ft_getinput(t_env *e, char *av)
 {
 	int		j;
 	int		fd;
@@ -48,15 +48,15 @@ static void	ft_getinput(t_env *e, char *av)
 	char	**tab;
 
 	if ((fd = open(av, O_RDONLY)) == -1)
-		ft_error("Le fichier n'a pas ete lu.");
+		ft_error("The file has not been read.");
 	e->height = 0;
 	e->width = 0x0FFFFFFF;
 	e->grid = (t_pt**)ft_xmalloc(sizeof(t_pt*));
 	e->grid[0] = NULL;
 	while (get_next_line(fd, &s) > 0 && ++(e->height))
 	{
-		if (!(tab = ft_strsplit(s, ' ')))
-			ft_error("La ligne ne peut pas etre splittee.");
+		if (!(tab = ft_strsplit(s, ' ')) || !tab[0])
+			ft_error("The line can't be split.");
 		e->grid = ft_addline(e->grid, tab, e);
 		free(s);
 		j = 0;
@@ -67,36 +67,36 @@ static void	ft_getinput(t_env *e, char *av)
 	close(fd);
 }
 
-void		ft_error(char *s)
+void	ft_error(char *s)
 {
 	ft_putendl_fd(s, 2);
 	exit(1);
 }
 
-void		*ft_xmalloc(size_t size)
+void	*ft_xmalloc(size_t size)
 {
 	void	*res;
 
 	if ((res = (void*)malloc(size)) == NULL)
-		ft_error("Impossible d'allouer la memoire.");
+		ft_error("Unable to allocate memory.");
 	return (res);
 }
 
-int			main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_env	e;
 
 	if (ac != 2)
-		ft_error("Voir Usage a la compilation.");
+		ft_error("See use the compilation.");
 	ft_getinput(&e, av[1]);
 	if (!(e.mlx = mlx_init()))
 		ft_error("Error init.");
 	if (!(e.win = mlx_new_window(e.mlx, WIDTH, HEIGHT, "fdf")))
-		ft_error("La fenetre n'a pas pu etre creee.");
+		ft_error("The window could not be created.");
 	if (!(e.img = mlx_new_image(e.mlx, WIDTH, HEIGHT)))
-		ft_error("L'image n'a pas pu etre creee.");
+		ft_error("The picture could not be created.");
 	if (!(e.table = mlx_get_data_addr(e.img, &e.bpp, &e.size, &e.endian)))
-		ft_error("Les donnees n'ont pas pu etre lues.");
+		ft_error("The data could not be created.");
 	e.zoom = 10;
 	e.r = 0xcc;
 	e.g = 0xcc;

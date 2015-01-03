@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/17 10:48:27 by ade-bonn          #+#    #+#             */
-/*   Updated: 2014/12/28 14:14:48 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2014/12/29 14:05:28 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 # include <sys/uio.h>
 # include <sys/types.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 int		get_next_line(int fd, char **line);
 int		my_read(int const fd, char **buf);

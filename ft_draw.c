@@ -6,7 +6,7 @@
 /*   By: ade-bonn <ade-bonn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/28 13:20:31 by ade-bonn          #+#    #+#             */
-/*   Updated: 2014/12/28 14:56:55 by ade-bonn         ###   ########.fr       */
+/*   Updated: 2014/12/29 14:45:22 by ade-bonn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void	ft_center(t_env *e, float x_shift, float y_shift, float z_shift)
 		{
 			e->grid[j][i].x = i - x_shift;
 			e->grid[j][i].y = j - y_shift;
-			e->grid[j][i].z -= z_shift;
 		}
 }
 
